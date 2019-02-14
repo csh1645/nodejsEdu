@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script type="text/javascript">
+      var datas = '<%- datas %>';//JSON 형식은 =가 아닌 -로 표기
+      console.log(JSON.parse(datas));
+      var dataArr = JSON.parse(datas);
+      window.onload = function () {
+        console.log("onload....");
+        var listTable = document.getElementById('listTable');
+        var str = ""
+        for (var i = 0; i < dataArr.length; i++) {
+          str += "<tr><th>" ;
+          str += "<a href='/update?_id=" + dataArr[i]._id + "'>";
+          str += dataArr[i]._id;
+          str += "<a/>"
+          str += "</th><th>"
+          str += dataArr[i].id;
+          str += "</th><th>";
+          str += dataArr[i].pw;
+          str += "</th><th>";
+          str += "<a href='/deleteOK?_id=" + dataArr[i]._id + "'>";
+          str += "delete";
+          str += "<a/>"
+          str += "</th></tr>";
+        }
+
+        listTable.innerHTML = str;
+      };
+    </script>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= datas %></p>
+    <a href="users">users</a>
+    <a href="test">test</a>
+    <hr>
+    <table border="1" style="width: 300px;">
+      <thead>
+        <tr>
+          <td>_ID</td>
+          <td>ID</td>
+          <td>PW</td>
+          <td>DEL</td>
+        </tr>
+      </thead>
+      <tbody id="listTable">
+
+      </tbody>
+    </table>
+
+  </body>
+</html>

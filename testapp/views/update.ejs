@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script type="text/javascript">
+      var vo = '<%- vo %>';//JSON 형식은 =가 아닌 -로 표기
+      console.log(JSON.parse(vo));
+      var voArr = JSON.parse(vo);
+      console.log(voArr.id);
+      window.onload = function () {
+
+        document.getElementById('_id').value = voArr._id;
+        document.getElementById('s_id').innerText = voArr._id;
+        document.getElementById('id').value = voArr.id;
+        document.getElementById('pw').value = voArr.pw;
+
+
+      };
+    </script>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <p><%= vo %></p>
+    <a href="users">users</a>
+    <a href="/">home</a>
+    <a href="test">test</a>
+    <a href="list">list</a>
+    <hr>
+    <form action="updateOK" method="post">
+      <label>_ID : </label>
+      <span id ="s_id">99</span>
+      <input type="hidden" id="_id" name="_id" value=""></input>
+      <br>
+      <label>ID : </label>
+      <input type="text" id="id" name="id" value=""></input>
+      <br>
+      <label>PW : </label>
+      <input type="text" id="pw" name="pw" value=""></input>
+      <br>
+      <input type="submit" name="" value="send"></input>
+    </form>
+  </body>
+</html>
