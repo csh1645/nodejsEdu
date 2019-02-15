@@ -5,12 +5,15 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= name %></p>
-    <a href="users">users</a>
-    <a href="/">home</a>
-    <a href="list">list</a>
-    <hr>
+    <% if(locals.user){
+      //user가 없다면 로콜변수에 할당해서
+      // not defind error 발생 방지
+    %>
+      <h2><%= user.name %></h2>
+    <% } %>
+
+    <%- include('menu') %>
+
     <form action="testOK" method="post">
       <label>ID : </label>
       <input type="text" name="id" value="admin"></input>

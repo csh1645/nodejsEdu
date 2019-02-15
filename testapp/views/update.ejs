@@ -10,34 +10,28 @@
       console.log(voArr.id);
       window.onload = function () {
 
-        document.getElementById('_id').value = voArr._id;
-        document.getElementById('s_id').innerText = voArr._id;
-        document.getElementById('id').value = voArr.id;
-        document.getElementById('pw').value = voArr.pw;
+        // document.getElementById('_id').value = voArr._id;
+        // document.getElementById('s_id').innerText = voArr._id;
+        // document.getElementById('id').value = voArr.id;
+        // document.getElementById('pw').value = voArr.pw;
 
 
       };
     </script>
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <p><%= vo %></p>
-    <a href="users">users</a>
-    <a href="/">home</a>
-    <a href="test">test</a>
-    <a href="list">list</a>
-    <hr>
+    <%- include('menu') %>
     <form action="updateOK" method="post">
+      <% var vo = JSON.parse(vo); %>
       <label>_ID : </label>
-      <span id ="s_id">99</span>
-      <input type="hidden" id="_id" name="_id" value=""></input>
+      <span id ="s_id"><%= vo._id %></span>
+      <input type="hidden" name="_id" value="<%= vo._id %>"></input>
       <br>
       <label>ID : </label>
-      <input type="text" id="id" name="id" value=""></input>
+      <input type="text" name="id" value="<%= vo.id %>"></input>
       <br>
       <label>PW : </label>
-      <input type="text" id="pw" name="pw" value=""></input>
+      <input type="text" name="pw" value="<%= vo.pw %>"></input>
       <br>
       <input type="submit" name="" value="send"></input>
     </form>
